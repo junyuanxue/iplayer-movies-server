@@ -43,19 +43,19 @@ class ServicesTest(TestCase):
             {
                 'title': 'Sydney White',
                 'synopsis': 'Modern Snow White',
-                'duration': '101 minutes',
+                'duration': 101,
                 'channel': 'BBC Two',
-                'rating': '5/10'
+                'rating': 5
             },
             {
                 'title': 'Emma',
                 'synopsis': 'Jane Austen classic',
-                'duration': '114 minutes',
+                'duration': 114,
                 'channel': 'BBC Two',
-                'rating': '7/10'
+                'rating': 7
             }
         ]
         movies = services.get_movies()
+        print('****')
+        print(movies)
         self.assertEqual(movies, expected_result)
-
-        # with patch.object(requests, 'get') as get_mock:

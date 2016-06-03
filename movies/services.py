@@ -14,19 +14,14 @@ def __get_movie_data():
 
 def __parse_data(info):
     rating = __get_movie_rating(info)
-    duration = __format_duration(info['programme']['duration'])
     movie = {
         'title': info['programme']['title'],
         'synopsis': info['programme']['short_synopsis'],
-        'duration': duration,
+        'duration': info['programme']['duration'] / 60,
         'channel': info['programme']['ownership']['service']['title'],
         'rating': rating
     }
     return movie
-
-def __format_duration(seconds):
-    duration_minutes = int(seconds / 60)
-    return '{} minutes'.format(duration_minutes)
 
 def __get_movie_rating(info):
     first_broadcast_date = info['programme']['first_broadcast_date']
@@ -39,15 +34,16 @@ def __get_movie_rating(info):
     response = requests.get(base_url + params)
     potential_matches = response.json()['results']
 
-    movie = __find_match(release_year, potential_matches)
-
-    return '*/10'
+    if len(potential_matches) == 0:
+        return None
+    if len(potential_matches) == 1:
+        return potential_matches[0]['vote_average']
+    else:
+        movie = __find_match(release_year, potential_matches)
+        return 'TOO MANY MOVIE OPTIONS'
 
 def __find_match(release_year, potential_matches):
-    if potential_matches != []:
-        for movie in potential_matches:
-            if 'release_date' in movie:
-                print(parse(movie['release_date']).year)
-                return
-    else:
-        print('*********** NO MATCH ***************')
+    for movie in potential_matches:
+        if 'release_date' in movie:
+            release_year_in_db = parse(movie['release_date']).year
+            return

@@ -4,7 +4,7 @@ from unittest.mock import Mock, patch
 from movies.services import movie_service
 from movies.services import rating_service
 
-class ServicesTest(TestCase):
+class MovieServiceTest(TestCase):
 
     def test_get_movies_data_and_return_parsed_movies(self):
         data = {

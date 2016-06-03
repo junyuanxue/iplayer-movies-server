@@ -1,4 +1,6 @@
 import requests
+from dateutil.parser import parse
+from django.conf import settings
 
 def get_movies():
     movies_info = __get_movie_data()['episodes']
@@ -27,5 +29,19 @@ def __format_duration(seconds):
     return '{} minutes'.format(duration_minutes)
 
 def __get_movie_rating(info):
-    release_year = info['programme']['first_broadcast_date']
+    first_broadcast_date = info['programme']['first_broadcast_date']
+    release_year = parse(first_broadcast_date).year
+    title = info['programme']['title']
+
+    base = 'https://api.themoviedb.org/3/search/multi'
+    api_key = settings.MOVIE_DB_API_KEY
+    params = '?api_key=' + api_key + '&query=' + title
+    url = base + params
+    response = requests.get(url)
+    potential_matches = response.json()['results']
+
+    if potential_matches != []:
+        print(potential_matches[0]['release_date'])
+    else:
+        print('*********** NO MATCH ***************')
     return '*/10'

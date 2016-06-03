@@ -10,8 +10,8 @@ class MoviesAPITest(APITestCase):
 
     def test_get_movies(self):
         with patch.object(services, 'get_movies') as mock_services:
-            mock_movies = [{'title': 'Emma', 'rating': 7},
-                           {'title': 'Sydney White', 'rating': 5}]
+            mock_movies = [{ 'title': 'Emma', 'rating': 7 },
+                           { 'title': 'Sydney White', 'rating': 5 }]
             mock_services.return_value = mock_movies
             response = self.client.get('/movies/')
             self.assertEqual(response.status_code, status.HTTP_200_OK)

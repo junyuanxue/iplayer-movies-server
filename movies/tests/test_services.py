@@ -32,6 +32,9 @@ class ServicesTest(TestCase):
                         }
                     }
                 }
+            ],
+            'results': [
+                { 'vote_average': 5 }
             ]
         }
         mock_response = Mock()
@@ -50,7 +53,7 @@ class ServicesTest(TestCase):
                 'synopsis': 'Jane Austen classic',
                 'duration': 6840,
                 'channel': 'BBC Two',
-                'rating': 7
+                'rating': 5
             }
         ]
         movies = services.get_movies()

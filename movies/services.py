@@ -1,8 +1,8 @@
 import requests
 
 def get_movies():
-    movies_json = __get_movie_data()
-    movies = map(__parse_data, movies_json['episodes'])
+    movies_info = __get_movie_data()['episodes']
+    movies = list(map(__parse_data, movies_info))
     return movies
 
 def __get_movie_data():
@@ -14,12 +14,12 @@ def __parse_data(info):
     rating = __get_movie_rating(info)
     duration = __format_duration(info['programme']['duration'])
     movie = {
-                'title': info['programme']['title'],
-                'synopsis': info['programme']['short_synopsis'],
-                'duration': duration,
-                'channel': info['programme']['ownership']['service']['title'],
-                'rating': rating
-            }
+        'title': info['programme']['title'],
+        'synopsis': info['programme']['short_synopsis'],
+        'duration': duration,
+        'channel': info['programme']['ownership']['service']['title'],
+        'rating': rating
+    }
     return movie
 
 def __format_duration(seconds):

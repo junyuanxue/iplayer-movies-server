@@ -1,5 +1,4 @@
 import requests
-from django.conf import settings
 
 def get_movies():
     movies_info = __get_movie_data()['episodes']

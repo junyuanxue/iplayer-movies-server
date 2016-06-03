@@ -14,5 +14,8 @@ class RatingServiceTest(TestCase):
         mock_response = Mock()
         mock_response.json.return_value = data
         requests.get = Mock(return_value=mock_response)
-        rating = rating_service.get_rating({'title': 'Emma'})
+        movie = {
+            'programme': { 'title': 'Emma' }
+        }
+        rating = rating_service.get_rating(movie)
         self.assertEqual(rating, 7)

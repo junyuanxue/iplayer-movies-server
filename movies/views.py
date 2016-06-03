@@ -6,6 +6,5 @@ from movies import services
 
 @api_view(['GET'])
 def movie_list(request, format=None):
-    movies = services.get_movie_data()
-    print(movies)
-    return Response('hello', status=status.HTTP_200_OK)
+    movies = services.get_movies()
+    return Response(movies, status=status.HTTP_200_OK)

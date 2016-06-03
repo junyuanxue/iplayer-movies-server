@@ -1,7 +1,8 @@
 from django.test import TestCase
 import requests
-from unittest.mock import Mock
-from movies import services
+from unittest.mock import Mock, patch
+from movies.services import movie_service
+from movies.services import rating_service
 
 class ServicesTest(TestCase):
 
@@ -32,29 +33,28 @@ class ServicesTest(TestCase):
                         }
                     }
                 }
-            ],
-            'results': [
-                { 'vote_average': 5 }
             ]
         }
-        mock_response = Mock()
-        mock_response.json.return_value = data
-        requests.get = Mock(return_value=mock_response)
-        expected_result = [
-            {
-                'title': 'Sydney White',
-                'synopsis': 'Modern Snow White',
-                'duration': 6060,
-                'channel': 'BBC Two',
-                'rating': 5
-            },
-            {
-                'title': 'Emma',
-                'synopsis': 'Jane Austen classic',
-                'duration': 6840,
-                'channel': 'BBC Two',
-                'rating': 5
-            }
-        ]
-        movies = services.get_movies()
-        self.assertEqual(movies, expected_result)
+        with patch.object(rating_service, 'get_rating') as mock_rating_service:
+            mock_rating_service.return_value = 5
+            mock_response = Mock()
+            mock_response.json.return_value = data
+            requests.get = Mock(return_value=mock_response)
+            expected_result = [
+                {
+                    'title': 'Sydney White',
+                    'synopsis': 'Modern Snow White',
+                    'duration': 6060,
+                    'channel': 'BBC Two',
+                    'rating': 5
+                },
+                {
+                    'title': 'Emma',
+                    'synopsis': 'Jane Austen classic',
+                    'duration': 6840,
+                    'channel': 'BBC Two',
+                    'rating': 5
+                }
+            ]
+            movies = movie_service.get_movies()
+            self.assertEqual(movies, expected_result)

@@ -33,15 +33,21 @@ def __get_movie_rating(info):
     release_year = parse(first_broadcast_date).year
     title = info['programme']['title']
 
-    base = 'https://api.themoviedb.org/3/search/multi'
+    base_url = 'https://api.themoviedb.org/3/search/multi'
     api_key = settings.MOVIE_DB_API_KEY
     params = '?api_key=' + api_key + '&query=' + title
-    url = base + params
-    response = requests.get(url)
+    response = requests.get(base_url + params)
     potential_matches = response.json()['results']
 
+    movie = __find_match(release_year, potential_matches)
+
+    return '*/10'
+
+def __find_match(release_year, potential_matches):
     if potential_matches != []:
-        print(potential_matches[0]['release_date'])
+        for movie in potential_matches:
+            if 'release_date' in movie:
+                print(parse(movie['release_date']).year)
+                return
     else:
         print('*********** NO MATCH ***************')
-    return '*/10'

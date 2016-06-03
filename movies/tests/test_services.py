@@ -13,7 +13,6 @@ class ServicesTest(TestCase):
                         'title': 'Sydney White',
                         'short_synopsis': 'Modern Snow White',
                         'duration': 6060,
-                        'first_broadcast_date': '2012-10-13T13:30:00+01:00',
                         'ownership': {
                             'service': {
                                 'title': 'BBC Two'
@@ -26,7 +25,6 @@ class ServicesTest(TestCase):
                         'title': 'Emma',
                         'short_synopsis': 'Jane Austen classic',
                         'duration': 6840,
-                        'first_broadcast_date': '2010-09-05T17:05:00+01:00',
                         'ownership': {
                             'service': {
                                 'title': 'BBC Two'
@@ -43,19 +41,17 @@ class ServicesTest(TestCase):
             {
                 'title': 'Sydney White',
                 'synopsis': 'Modern Snow White',
-                'duration': 101,
+                'duration': 6060,
                 'channel': 'BBC Two',
                 'rating': 5
             },
             {
                 'title': 'Emma',
                 'synopsis': 'Jane Austen classic',
-                'duration': 114,
+                'duration': 6840,
                 'channel': 'BBC Two',
                 'rating': 7
             }
         ]
         movies = services.get_movies()
-        print('****')
-        print(movies)
         self.assertEqual(movies, expected_result)

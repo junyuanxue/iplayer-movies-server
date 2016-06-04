@@ -15,9 +15,9 @@ def __parse_data(info):
     rating = rating_service.get_rating(info)
     movie = {
         'title': info['programme']['title'],
+        'pid': info['programme']['pid'],
         'synopsis': info['programme']['short_synopsis'],
         'duration': info['programme']['duration'],
-        'channel': info['programme']['ownership']['service']['title'],
         'rating': rating
     }
     return movie

@@ -12,25 +12,17 @@ class MovieServiceTest(TestCase):
                 {
                     'programme': {
                         'title': 'Sydney White',
+                        'pid': 'b01ngx7r',
                         'short_synopsis': 'Modern Snow White',
-                        'duration': 6060,
-                        'ownership': {
-                            'service': {
-                                'title': 'BBC Two'
-                            }
-                        }
+                        'duration': 6060
                     }
                 },
                 {
                     'programme': {
                         'title': 'Emma',
+                        'pid': 'b007969t',
                         'short_synopsis': 'Jane Austen classic',
-                        'duration': 6840,
-                        'ownership': {
-                            'service': {
-                                'title': 'BBC Two'
-                            }
-                        }
+                        'duration': 6840
                     }
                 }
             ]
@@ -43,16 +35,16 @@ class MovieServiceTest(TestCase):
             expected_result = [
                 {
                     'title': 'Sydney White',
+                    'pid': 'b01ngx7r',
                     'synopsis': 'Modern Snow White',
                     'duration': 6060,
-                    'channel': 'BBC Two',
                     'rating': 5
                 },
                 {
                     'title': 'Emma',
+                    'pid': 'b007969t',
                     'synopsis': 'Jane Austen classic',
                     'duration': 6840,
-                    'channel': 'BBC Two',
                     'rating': 5
                 }
             ]

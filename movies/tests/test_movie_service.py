@@ -56,5 +56,4 @@ class MovieServiceTest(TestCase):
                     'rating': 5
                 }
             ]
-            movies = movie_service.get_movies()
-            self.assertEqual(movies, expected_result)
+            self.assertEqual(movie_service.get_movies(), expected_result)

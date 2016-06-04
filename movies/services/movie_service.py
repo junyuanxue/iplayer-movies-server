@@ -1,4 +1,5 @@
 import requests
+from movies.services import rating_service
 
 def get_movies():
     movies_info = __get_movie_data()['episodes']
@@ -11,7 +12,7 @@ def __get_movie_data():
     return response.json()
 
 def __parse_data(info):
-    rating = __get_movie_rating(info)
+    rating = rating_service.get_rating(info)
     movie = {
         'title': info['programme']['title'],
         'synopsis': info['programme']['short_synopsis'],

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'movies',
+    'corsheaders',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -51,6 +52,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'iplayer_movies_server.urls'
@@ -73,6 +76,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'iplayer_movies_server.wsgi.application'
 
+# CORS configuration
+CORS_ORIGIN_WHITELIST = (
+        'localhost:8080',
+        'localhost:3000'
+    )
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases

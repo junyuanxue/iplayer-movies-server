@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.test import APIClient, APITestCase
 from unittest.mock import patch
-from movies import services
+from movies.services import movie_service
 
 class MoviesAPITest(APITestCase):
 
@@ -9,7 +9,7 @@ class MoviesAPITest(APITestCase):
         self.client = APIClient()
 
     def test_get_movies(self):
-        with patch.object(services, 'get_movies') as mock_services:
+        with patch.object(movie_service, 'get_movies') as mock_services:
             mock_movies = [{ 'title': 'Emma', 'rating': 7 },
                            { 'title': 'Sydney White', 'rating': 5 }]
             mock_services.return_value = mock_movies

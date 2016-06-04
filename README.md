@@ -26,12 +26,22 @@ The index page colour theme is inspired by the [BBC iPlayer website](http://www.
 
 ## To run the app :arrow_forward:
 
-Clone the server repo and install dependencies:
+Clone the server repo:
 ```
 $ git clone https://junyuanxue@bitbucket.org/junyuanxue/iplayer-movies-server.git
 $ cd iplayer-movies-server
+```
+Create and start your virtual environment:
+```
+$ pip3 install virtualenv
+$ virtualenv env
+$ source env/bin/activate
+```
+Install dependencies:
+```
 $ pip install -r requirements.txt
 ```
+
 You'll need an API key for the [Movie Database API](https://www.themoviedb.org/documentation/api). Once you've registered and acquired your token, set up your local environment variables:
 ```
 $ export MOVIE_DB_API_KEY=your_api_key_here

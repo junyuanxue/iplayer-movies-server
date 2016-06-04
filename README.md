@@ -38,7 +38,7 @@ Then run the server:
 ```
 $ ./manage.py runserver
 ```
-If you go to `http://localhost:8000/movies` you'll then see a lovely json file containing a list of movies with their ratings.
+If you go to `http://localhost:8000/movies/` you'll then see a lovely json file containing a list of movies with their ratings.
 
 To see these movies more beautifully displayed, clone the front-end repo and install dependencies:
 ```
@@ -51,12 +51,12 @@ Then run the app:
 ```
 $ npm start
 ```
-Visit `http://localhost:3000` and voilà! Click on the links to watch.
+Visit `http://localhost:3000` and voilà! Click on the links to watch. :sunglasses:
 
 
 ## Testing :white_check_mark:
 
-The server has been tested with unittest. I used Mock in unittest to mock out the external API calls.
+The server has been tested with unittest. I used Mock to mock out services inside views and the external API calls inside services.
 
 To run the tests:
 ```

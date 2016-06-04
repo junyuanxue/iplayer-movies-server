@@ -14,6 +14,7 @@ class MoviesAPITest(APITestCase):
                            { 'title': 'Sydney White', 'rating': 5 }]
             mock_services.return_value = mock_movies
             response = self.client.get('/movies/')
+            
             self.assertEqual(response.status_code, status.HTTP_200_OK)
             self.assertEqual(response.json()[0]['title'], 'Emma')
             self.assertEqual(response.json()[0]['rating'], 7)

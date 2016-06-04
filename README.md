@@ -48,7 +48,7 @@ $ export MOVIE_DB_API_KEY=your_api_key_here
 ```
 Then run the server:
 ```
-$ ./manage.py runserver
+$ python manage.py runserver
 ```
 If you go to `http://localhost:8000/movies/` you'll then see a lovely json file containing a list of movies with their ratings.
 

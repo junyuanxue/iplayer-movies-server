@@ -6,7 +6,7 @@
 
 This is a simple web app that fetches and displays a list of available movies from the BBC iPlayer API with their ratings, which are provided by the Movie Database API.
 
-The server is built with Django REST framework which serves as a RESTful API for the front-end Angular app to consume.
+The server is built with Django REST framework which serves as a RESTful API for the [front-end Angular app](https://github.com/junyuanxue/iplayer-movies-frontend) to consume.
 
 ## To run the app :arrow_forward:
 
@@ -38,7 +38,7 @@ If you go to `http://localhost:8000/movies/` you'll then see a lovely json file 
 
 To see these movies more beautifully displayed, clone the front-end repo and install dependencies:
 ```
-$ git clone
+$ git clone https://github.com/junyuanxue/iplayer-movies-frontend.git
 $ cd iplayer-movies-frontend
 $ npm install
 $ bower install
